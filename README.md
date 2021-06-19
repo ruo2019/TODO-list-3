@@ -1,2 +1,9 @@
-This is ma todo list!!!!!
+Todo List
 -----------------------
+
+This is for ass 3.
+
+Credits:
+---------------------------
+|  ruo2019  |  qingy2019  |
+|-----------|-------------|
