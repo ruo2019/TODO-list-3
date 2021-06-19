@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality
+package com.conkermobile.android.todoList
 
 import android.content.res.Resources
 import android.text.Html
 import android.text.Spanned
-import com.example.android.trackmysleepquality.database.TodoItem
+import com.conkermobile.android.todoList.database.TodoItem
 
 /**
  * These functions create a formatted string that can be set in a TextView.
@@ -49,21 +49,21 @@ fun convertNumericQualityToString(quality: Int, resources: Resources): String {
  * applicable per word. So, we build a formatted string using HTML. This is handy, but we will
  * learn a better way of displaying this data in a future lesson.
  *
- * @param   nights - List of all SleepNights in the database.
+ * @param   tasks - List of all SleepNights in the database.
  * @param   resources - Resources object for all the resources defined for our app.
  *
  * @return  Spanned - An interface for text that has formatting attached to it.
  *           See: https://developer.android.com/reference/android/text/Spanned
  */
-fun formatNights(nights: List<TodoItem>, resources: Resources): Spanned {
+fun formatNights(tasks: List<TodoItem>, resources: Resources): Spanned {
     val sb = StringBuilder()
     sb.apply {
         append(resources.getString(R.string.title))
-        nights.forEach {
+        tasks.forEach {
             append("<br>")
-            append("\t${(it.taskDetails)}<br>")
-            append(resources.getString(R.string.created_at_time))
-            append("\t${it.createdAt}<br>")
+            append("${if (it.isImportant) "<font color='red'>!</font> \t" else "\t"} <b>" + "\t${(it.taskDetails)}</b>")
+            append("\t\t\t\t <span class='notbold'>created at: </span>"/**resources.getString(R.string.created_at_time)**/)
+            append("${it.createdAt}<br>")
         }
     }
     return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)

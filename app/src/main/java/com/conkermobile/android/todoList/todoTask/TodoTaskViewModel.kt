@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.todoTask
+package com.conkermobile.android.todoList.todoTask
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.conkermobileX.getlivedata.GetLiveData
-import com.example.android.trackmysleepquality.database.TodoDatabaseDao
-import com.example.android.trackmysleepquality.database.TodoItem
+import com.conkermobile.android.todoList.database.TodoDatabaseDao
+import com.conkermobile.android.todoList.database.TodoItem
 import kotlinx.coroutines.launch
 
 class TodoTaskViewModel(
@@ -30,13 +28,15 @@ class TodoTaskViewModel(
 ) :
     ViewModel() {
 
+    private val _text =  GetLiveData<String>()
+    val text = _text.liveData
+
+    private val _important = MutableLiveData(false)
+    val important : LiveData<Boolean> get() = _important
+
     private val _navigateToSleepTracker = GetLiveData<Boolean?>()
 
-    val navigateToSleepTracker: LiveData<Boolean?>
-        get() = _navigateToSleepTracker
-
-
-
+    val navigateToSleepTracker = _navigateToSleepTracker.liveData
 //    fun onStopTracking() {
 //        viewModelScope.launch {
 //            // In Kotlin, the return@label syntax specifies the function from which
@@ -50,6 +50,14 @@ class TodoTaskViewModel(
 //
 //    }
 
+    fun onDone() {
+        viewModelScope.launch {
+            val task = TodoItem(sleepNightKey, isImportant = _important.value!!, taskDetails = _text.value!!)
+            database.insert(task)
+            _navigateToSleepTracker.value = true
+        }
+    }
+
     private suspend fun update(night: TodoItem) {
         database.update(night)
     }
@@ -58,16 +66,24 @@ class TodoTaskViewModel(
         _navigateToSleepTracker.value = null
     }
 
-    fun onSetTodoTask(task: String) {
-        viewModelScope.launch {
-            val tonight = database.get(sleepNightKey) ?: return@launch
-            tonight.taskDetails = task
-            database.update(tonight)
+//    fun onSetTodoTask(task: String) {
+//        viewModelScope.launch {
+//            val tonight = database.get(sleepNightKey) ?: return@launch
+//            tonight.taskDetails = task
+//            database.update(tonight)
+//
+//
+//            // Setting this state variable to true will alert the observer and trigger navigation.
+//            _navigateToSleepTracker.value = true
+//        }
+//    }
 
+    fun setText(text: String) {
+        _text.value = text
+    }
 
-            // Setting this state variable to true will alert the observer and trigger navigation.
-            _navigateToSleepTracker.value = true
-        }
+    fun setImportant(important: Boolean) {
+        _important.value = important
     }
 
 }

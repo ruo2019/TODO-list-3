@@ -22,7 +22,7 @@ apply plugin: 'androidx.navigation.safeargs'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.example.android.trackmysleepquality"
+        applicationId "com.conkermobile.android.todoList"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1

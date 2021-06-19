@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.database
+package com.conkermobile.android.todoList.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -14,27 +14,20 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.todoTracker
+package com.conkermobile.android.todoList.todoTask
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.trackmysleepquality.database.TodoDatabaseDao
+import com.conkermobile.android.todoList.database.TodoDatabaseDao
 
-/**
- * This is pretty much boiler plate code for a ViewModel Factory.
- *
- * Provides the TodoDatabaseDao and context to the ViewModel.
- */
-class TodoTrackerViewModelFactory(
-    private val dataSource: TodoDatabaseDao,
-    private val application: Application) : ViewModelProvider.Factory {
-    @Suppress("unchecked_cast")
+class TodoTaskViewModelFactory(
+    private val todoId: Long,
+    private val dataSource: TodoDatabaseDao
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TodoTrackerViewModel::class.java)) {
-            return TodoTrackerViewModel(dataSource, application) as T
+        if (modelClass.isAssignableFrom(TodoTaskViewModel::class.java)) {
+            return TodoTaskViewModel(todoId, dataSource) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-

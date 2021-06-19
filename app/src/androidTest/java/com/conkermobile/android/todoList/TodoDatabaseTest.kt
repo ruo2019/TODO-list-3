@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality
+package com.conkermobile.android.todoList
 
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.android.trackmysleepquality.database.TodoDatabase
-import com.example.android.trackmysleepquality.database.TodoDatabaseDao
-import com.example.android.trackmysleepquality.database.TodoItem
+import com.conkermobile.android.todoList.database.TodoDatabase
+import com.conkermobile.android.todoList.database.TodoDatabaseDao
+import com.conkermobile.android.todoList.database.TodoItem
 import org.junit.Assert.assertEquals
 import org.junit.After
 import org.junit.Before

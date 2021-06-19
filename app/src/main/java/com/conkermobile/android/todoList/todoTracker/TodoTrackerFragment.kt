@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.todoTracker
+package com.conkermobile.android.todoList.todoTracker
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,9 +25,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.android.trackmysleepquality.R
-import com.example.android.trackmysleepquality.database.TodoDatabase
-import com.example.android.trackmysleepquality.databinding.FragmentTodoTrackerBinding
+import com.conkermobile.android.todoList.R
+import com.conkermobile.android.todoList.database.TodoDatabase
+import com.conkermobile.android.todoList.databinding.FragmentTodoTrackerBinding
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -74,7 +74,7 @@ class TodoTrackerFragment : Fragment() {
         sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, { night ->
             if (night != null) {
                 this.findNavController().navigate(
-                    TodoTrackerFragmentDirections.actionSleepTrackerFragmentToSleepQualityFragment(
+                    TodoTrackerFragmentDirections.actionTodoTrackerFragmentToTodoTaskFragment(
                         night.taskId
                     )
                 )

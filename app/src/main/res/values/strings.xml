@@ -35,7 +35,7 @@
 
     <!-- Output to TextView styled with a little HTML -->
     <string name="title"><![CDATA[<h3>HERE IS YOUR TASK DATA</h3>]]></string>
-    <string name="created_at_time"><![CDATA[<b>created at:</b>]]></string>
+    <string name="created_at_time"><![CDATA[<b>created at: </b>]]></string>
     <string name="quality"><![CDATA[<b>Task:</b>]]></string>
 
     <!-- Sleep quality strings -->

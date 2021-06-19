@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.todoTracker
+package com.conkermobile.android.todoList.todoTracker
 
 import android.app.Application
-import android.util.Log
-import android.util.Log.i
 import androidx.lifecycle.*
 import com.conkermobileX.getlivedata.GetLiveData
-import com.example.android.trackmysleepquality.database.TodoDatabaseDao
-import com.example.android.trackmysleepquality.database.TodoItem
-import com.example.android.trackmysleepquality.formatNights
+import com.conkermobile.android.todoList.database.TodoDatabaseDao
+import com.conkermobile.android.todoList.database.TodoItem
+import com.conkermobile.android.todoList.formatNights
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

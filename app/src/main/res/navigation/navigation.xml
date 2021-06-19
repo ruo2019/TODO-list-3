@@ -21,34 +21,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/sleep_tracker_fragment">
+    app:startDestination="@id/todo_tracker_fragment">
 
     <fragment
-        android:id="@+id/sleep_tracker_fragment"
-        android:name="com.example.android.trackmysleepquality.todoTracker.TodoTrackerFragment"
+        android:id="@+id/todo_tracker_fragment"
+        android:name="com.conkermobile.android.todoList.todoTracker.TodoTrackerFragment"
         android:label="@string/todo_tracker_fragment"
         tools:layout="@layout/fragment_todo_tracker">
         <action
-            android:id="@+id/action_sleepTrackerFragment_to_sleepQualityFragment"
-            app:destination="@id/sleep_quality_fragment"
+            android:id="@+id/action_todo_tracker_fragment_to_todo_task_fragment"
+            app:destination="@id/todo_task_fragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_right" />
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
-        android:id="@+id/sleep_quality_fragment"
-        android:name="com.example.android.trackmysleepquality.todoTask.TodoTaskFragment"
+        android:id="@+id/todo_task_fragment"
+        android:name="com.conkermobile.android.todoList.todoTask.TodoTaskFragment"
         android:label="@string/todo_task_fragment"
         tools:layout="@layout/fragment_todo_task">
         <argument
-            android:name="sleepNightKey"
+            android:name="todoId"
             app:argType="long" />
         <action
-            android:id="@+id/action_sleepQualityFragment_to_sleepTrackerFragment"
-            app:destination="@id/sleep_tracker_fragment"
-            app:launchSingleTop="false"
-            app:popUpTo="@+id/sleep_tracker_fragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_todo_task_fragment_to_todo_tracker_fragment"
+            app:destination="@id/todo_tracker_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
 </navigation>
